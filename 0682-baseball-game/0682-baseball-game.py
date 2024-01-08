@@ -14,11 +14,8 @@ class Solution:
             else :
                 new_nums.append(int(i))
 
-            final_sum = 0
-            for i in new_nums :
-                final_sum += i
             
-        return final_sum
+        return sum(new_nums)
                 
         
             
