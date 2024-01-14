@@ -7,9 +7,12 @@ class MyStack:
         self.q.append(x)
 
     def pop(self) -> int:
-        return self.q.pop()
-        
 
+        for i in range(len(self.q)-1) :
+            self.q.append(self.q.popleft())
+            
+        return self.q.popleft()
+        
     def top(self) -> int:
         return self.q[len(self.q)-1]
 
