@@ -50,4 +50,3 @@ class Solution:
         return self.mergeArray(arr_1,arr_2)
         
         
-        
