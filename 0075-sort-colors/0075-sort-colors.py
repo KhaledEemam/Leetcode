@@ -3,6 +3,25 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        l , r = 0 , len(nums) -1
+        i = 0
+        def swap(n,k) :
+            temp = nums[n]
+            nums[n] = nums[k]
+            nums[k] = temp
+            
+        
+        while i <= r :
+            if nums[i] == 0 :
+                swap(l,i)
+                l += 1
+            elif nums[i] == 2 :
+                swap(r,i)
+                r -= 1
+                i -= 1
+            i =i+1
+        
+        """
         counts = [0] * 3
         
         for i in nums :
@@ -25,6 +44,6 @@ class Solution:
                 nums[n] = element
             
             st_index = end_index
-            
+           """ 
             
         
