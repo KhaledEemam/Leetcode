@@ -3,28 +3,28 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        counts = {}
+        counts = [0] * 3
         
         for i in nums :
-            if i in counts.keys() :
-                counts[i] += 1
+            if i == 0 :
+                counts[0] += 1
+            elif i == 1 :
+                counts[1] += 1
             else :
-                counts[i] = 1
+                counts[2] += 1
             
         st_index = 0
         end_index = 0
         
-        while len(counts.keys()) > 0:
-            element = min(counts.keys())
-            count = counts[element]
-      
+        for i in range(len(counts)) :
+            element = i
+            count = counts[i]
             end_index = end_index + count
             
             for n in range(st_index,end_index,1):
                 nums[n] = element
             
             st_index = end_index
-            del counts[element]
             
             
         
