@@ -12,8 +12,7 @@ class Solution:
             return cache[n]
         
         return memoization(n)
-        """
-      
+#########################################################################
         cache = {}
         def memo(i) :
             if i == n :
@@ -27,7 +26,14 @@ class Solution:
             return cache[i]
         
         return memo(0)
-        
+        """
+        one , two = 1 , 1
+    
+        for i in range(n-1) :
+            temp = one
+            one = one + two
+            two = temp
+        return one
         
 
 
