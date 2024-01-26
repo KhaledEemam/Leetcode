@@ -1,5 +1,6 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
+        """
         cache = [[0]*n for i in range(m)]
         
         def move(x,y,m,n) :
@@ -14,6 +15,19 @@ class Solution:
             return cache[x][y]
         
         return move(0,0,m,n)
+           """
+        prevrow = [0] * n
+        
+        for i in range(m-1 , -1 , -1):
+            currow = [0] * n
+            currow[n-1] = 1
+            for k in range(n-2 , -1 , -1) :
+                currow[k] = currow[k+1] + prevrow[k]
+            
+            prevrow = currow
+            
+        return prevrow[0]
+                
             
             
             
