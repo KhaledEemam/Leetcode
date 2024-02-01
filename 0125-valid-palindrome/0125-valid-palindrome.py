@@ -9,8 +9,6 @@ class Solution:
                 
         l , r = 0 , len(text)-1
         
-        if l == r :
-            return True
         
         while l < r :
             if text[l] == text[r] :
