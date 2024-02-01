@@ -15,8 +15,6 @@ class Solution:
             max_right = max(max_right,height[i+1])
             max_right_array[i] = max_right
 
-        print(max_left_array)
-        print(max_right_array)
         res = 0
         for i in range(len(height)) :
             min_l_r = min(max_left_array[i],max_right_array[i])
