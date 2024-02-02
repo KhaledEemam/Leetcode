@@ -1,6 +1,16 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        my_hash = {}
+        j = 1 
+        for i in range(1,len(nums)) :
+            if nums[i] == nums[j-1] :
+                pass
+            else :
+                nums[j] = nums[i]
+                j += 1
+        
+        return j
+        """   
+    my_hash = {}
         j = 0 
         
         for num in nums :
@@ -12,6 +22,7 @@ class Solution:
                 j += 1
                 
         return j
+        """
         
         
         
