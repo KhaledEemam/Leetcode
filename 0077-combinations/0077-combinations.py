@@ -9,8 +9,7 @@ class Solution:
                 return
 
             for q in range(len(numbers_list)):
-                if numbers_list[q] not in curlist :
-                    backtrack(i+1,curlist + [numbers_list[q]] , numbers_list[q+1:])
+                backtrack(i+1,curlist + [numbers_list[q]] , numbers_list[q+1:])
 
         backtrack(0,[],numbers)
         return res
