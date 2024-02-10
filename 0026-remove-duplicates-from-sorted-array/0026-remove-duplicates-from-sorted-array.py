@@ -1,33 +1,18 @@
 class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
-        j = 1 
-        for i in range(1,len(nums)) :
-            if nums[i] == nums[j-1] :
-                pass
-            else :
-                nums[j] = nums[i]
-                j += 1
-        
-        return j
-        """   
-    my_hash = {}
-        j = 0 
-        
-        for num in nums :
-            if num in my_hash :
-                pass
-            else :
-                my_hash[num] = 1
-                nums[j] = num
-                j += 1
+    def removeDuplicates(self, nums: List[int]) -> int:        
+        i = 0
+        k = 0
+        while i < len(nums) :
+            while i+1 < len(nums) and nums[i] == nums[i+1] :
+                i += 1
                 
-        return j
-        """
-        
-        
-        
-        
-        
+            nums[k] = nums[i]
+            k += 1
+            i += 1
+            
+        return k
+                
+            
         
         
         
