@@ -1,7 +1,45 @@
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-        """
-        Do not return anything, modify nums1 in-place instead.
+        i , l , r = len(nums1) -1 , m -1 , n-1
+        
+        while r >= 0 and l >= 0  :
+            if nums1[l] >= nums2[r] :
+                nums1[i] = nums1[l]
+                l -= 1
+                i -= 1
+            else :
+                nums1[i] = nums2[r]
+                r -= 1
+                i -= 1
+                
+        if l == -1 :
+            nums1[:i+1] = nums2[:r+1]
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         """
         nums1_divided = nums1[:m]
         
@@ -28,6 +66,8 @@ class Solution:
             nums1[h:] = nums2[k:]
         elif k == n :
             nums1[h:] = nums1_divided[i:]
+            
+        """
             
                 
                 
