@@ -1,22 +1,23 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
         
-        def get_digits(string):
-            digits = []
-            result = 0
-            for char in string:
-                digits.append(int(char))
-            result = sum(digit**2 for digit in digits)
-            return result
+        def get_digits(n):
+            output = 0
+            while n :
+                digit = n % 10
+                digit = digit**2
+                output += digit
+                n = n//10
+            return output
         
-        my_hash = {}
+        nums_set = set()
         digits_sum = 0 
         
-        while digits_sum not in my_hash :
-            digits_sum = get_digits(str(n))
+        while digits_sum not in nums_set :
+            digits_sum = get_digits(n)
             if digits_sum == 1 :
                 return True
-            my_hash[n] = 0
+            nums_set.add(n)
             n = digits_sum
             
             
