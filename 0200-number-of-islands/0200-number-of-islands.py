@@ -19,7 +19,7 @@ class Solution:
         count = 0
         for row in range(rows) :
             for column in range(columns) :
-                if dfs(row,column) :
+                if (row,column) not in visited and dfs(row,column)  :
                     count += 1
         
         return count
