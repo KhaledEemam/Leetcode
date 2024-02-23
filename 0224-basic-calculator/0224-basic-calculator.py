@@ -8,21 +8,19 @@ class Solution:
             elif c in "+-" :
                 output += (sign * cur)
                 if c == '+':
-                    sign = 1
+                    sign = 1 
                 else :
                     sign = -1
                 cur = 0
-            elif c == '(' :
+            elif c == "(" :
                 stack.append(output)
                 stack.append(sign)
                 output = 0
                 sign = 1
-            elif c == ')' :
+            elif c ==")" :
                 output += (cur * sign)
                 output *= stack.pop()
                 output += stack.pop()
                 cur = 0
                 sign = 1
         return output + (cur*sign)
-                
-        
