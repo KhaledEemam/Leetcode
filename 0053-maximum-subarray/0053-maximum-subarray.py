@@ -1,9 +1,13 @@
-class Solution(object):
-    def maxSubArray(self, nums):
-        _max = prev = nums[0]
-        for i in nums[1:] :
-            prev = max(i , i+prev)
-            _max = max(prev,_max)
-        return _max
-
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        max_sum = nums[0]
+        cur_sum = 0
         
+        for num in nums :
+            if cur_sum < 0 :
+                cur_sum = 0
+            cur_sum += num
+            max_sum = max(max_sum,cur_sum)
+            
+            
+        return max_sum
