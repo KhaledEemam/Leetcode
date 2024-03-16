@@ -3,7 +3,7 @@ class Solution:
         memo = {}
         
         def dfs(l,r) :
-            if l + r == len(s3) :
+            if l == len(s1) and r == len(s2) :
                 return True
             
             if (l,r) in memo :
