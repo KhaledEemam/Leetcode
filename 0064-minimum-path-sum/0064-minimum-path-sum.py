@@ -1,5 +1,18 @@
 class Solution:
     def minPathSum(self, grid: List[List[int]]) -> int:
+        ROWS , COLUMNS = len(grid) , len(grid[0])
+        matrix = [[float("inf")] * (COLUMNS+1) for r in range(ROWS+1)]
+        matrix[ROWS][COLUMNS-1] = 0
+        
+        for r in range(ROWS-1,-1,-1):
+            for c in range(COLUMNS-1,-1,-1) :
+                matrix[r][c] = grid[r][c] + min(matrix[r+1][c],matrix[r][c+1])
+                
+        return matrix[0][0]
+        
+
+        """
+        # dfs
         memo = {}
         ROWS , COLUMNS = len(grid) , len(grid[0])
         visited = set()
@@ -23,5 +36,6 @@ class Solution:
             
             return cur_sum
         
-        
         return min_path_sum(0,0)
+        """
+        
