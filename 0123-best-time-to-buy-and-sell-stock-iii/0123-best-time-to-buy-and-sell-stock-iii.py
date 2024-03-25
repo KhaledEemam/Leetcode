@@ -4,24 +4,22 @@ class Solution:
         right_profit = [0] * len(prices)
         
         min_left = prices[0]
-        max_left_profit = float("-inf")
         for i in range(1,len(prices)) :
-            max_left_profit = max(max_left_profit,(prices[i]-min_left))
+            max_left_profit = max(left_profit[i-1],(prices[i]-min_left))
             left_profit[i] = max_left_profit
             if prices[i] < min_left :
                 min_left = prices[i]
                 
         max_right = prices[-1]
-        max_right_profit = float("-inf")
         for i in range(len(prices)-2,-1,-1) :
-            max_right_profit = max(max_right_profit,(max_right-prices[i]))
+            max_right_profit = max(right_profit[i+1],(max_right-prices[i]))
             right_profit[i] = max_right_profit
             if prices[i] > max_right :
                 max_right = prices[i]
                 
         two_trans_profits = right_profit[0]
         for i in range(1,len(prices)) :
-            two_trans_profits = max(0,two_trans_profits,(left_profit[i-1]+right_profit[i]))
+            two_trans_profits = max(two_trans_profits,(left_profit[i-1]+right_profit[i]))
             
         return two_trans_profits
         
