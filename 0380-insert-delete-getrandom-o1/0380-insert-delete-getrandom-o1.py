@@ -3,14 +3,16 @@ import random
 class RandomizedSet:
 
     def __init__(self):
-        self.rset = set()
+        self.rset = {}
+        self.numlist = []
         
 
     def insert(self, val: int) -> bool:
         if val in self.rset :
             return False
         else :
-            self.rset.add(val)
+            self.rset[val] = len(self.numlist)
+            self.numlist.append(val)
             return True
             
 
@@ -18,12 +20,18 @@ class RandomizedSet:
         if val not in self.rset :
             return False
         else :
-            self.rset.remove(val)
+            lastval = self.numlist[-1]
+            idx = self.rset[val]
+            self.numlist[idx] = lastval
+            self.numlist.pop()
+            self.rset[lastval] = idx
+            del self.rset[val]
+            
             return True
         
 
     def getRandom(self) -> int:
-        return random.choice(list(self.rset))
+        return random.choice(self.numlist)
         
 
 
