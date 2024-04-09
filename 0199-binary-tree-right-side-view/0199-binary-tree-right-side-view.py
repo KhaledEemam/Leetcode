@@ -1,4 +1,3 @@
-from collections import deque
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -7,23 +6,27 @@ from collections import deque
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if not root :
+            return []
+        
+        values = []
         queue = deque()
-        res = []
-        if root :
-            queue.append(root)
-            
+        queue.append(root)
+        
         while queue :
             queue_length = len(queue)
             for i in range(queue_length) :
+                node = queue.popleft()
                 
-                cur = queue.popleft()
-                
-                if i == queue_length-1 :
-                    res.append(cur.val)
-                
-                if cur.left:
-                    queue.append(cur.left)
-                if cur.right :
-                    queue.append(cur.right)
+                if node.left :
+                    queue.append(node.left)
                     
-        return res
+                if node.right :
+                    queue.append(node.right)
+                
+                if i == (queue_length -1) :
+                    values.append(node.val)
+                    
+        return values
+                
+        
