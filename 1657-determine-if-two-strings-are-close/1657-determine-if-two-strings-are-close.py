@@ -21,34 +21,4 @@ class Solution:
                 return False
             
         return True
-
-        
-        """
-        word1 = "".join(sorted(word1))
-        word2 = "".join(sorted(word2))
-        
-        if word1 == word2 :
-            return True
-        
-        word1_dict = defaultdict(int)
-        word2_dict = defaultdict(int)
-        
-        for letter in word1 :
-            word1_dict[letter] += 1
-            
-        for letter in word2 :
-            word2_dict[letter] += 1
-            
-        if set(word1_dict.keys()) != set (word2_dict.keys()) :
-            return False
-        else :     
-            if sorted(list(word1_dict.values())) == sorted(list(word2_dict.values())) :
-                return True
-            else :
-                return False
-            
-        
-        """    
-
-
         
