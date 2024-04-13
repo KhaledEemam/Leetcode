@@ -25,7 +25,7 @@ class Solution:
                         return w * weight
                     
                     if t not in visit :
-                        queue.append([t,w*weight])
+                        queue.append((t,w*weight))
                         visit.add(t)
                 
             return -1
