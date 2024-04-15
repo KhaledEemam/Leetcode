@@ -3,22 +3,14 @@ class Solution:
         if len(nums) == 1 :
             return True
         
-        def check_monotone_increasing(numbers) :
-            for i in range(1,len(nums)) :
-                if nums[i] < nums[i-1] :
-                    return False
+        increase , decrease = True , True
+        
+        for i in range(1,len(nums)) :
+            if nums[i] > nums[i-1] :
+                increase = False
             
-            return True
+            if nums[i] < nums[i-1] :
+                decrease = False
+
         
-        def check_monotone_decreasing(numbers) :
-            for i in range(1,len(nums)) :
-                if nums[i] > nums[i-1] :
-                    return False
-            
-            return True
-        
-        monotone = check_monotone_increasing(nums) | check_monotone_decreasing(nums)
-        
-        return monotone
-        
-        
+        return increase | decrease
