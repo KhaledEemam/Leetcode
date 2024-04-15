@@ -1,23 +1,19 @@
 class Solution:
     def countBits(self, n: int) -> List[int]:
+        ans = [0] * (n+1)
         
-        def get_count(n) :
+        def get_count(number) :
             count = 0 
-            
-            while n > 0 :
-                if n & 1 == 1:
+            while number :
+                if number & 1 == 1:
                     count += 1
-                n = n>>1
+                number = number >> 1
                 
             return count
         
-        my_array = [0] * (n+1)
-        
         for i in range(n+1) :
-            count = get_count(i)
-            my_array[i] = count
+            ans[i] = get_count(i)
             
-        return my_array
-        
+        return ans
         
         
