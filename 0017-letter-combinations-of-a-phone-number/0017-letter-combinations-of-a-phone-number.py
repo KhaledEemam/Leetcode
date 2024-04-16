@@ -1,34 +1,24 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        my_hash = {'2' : ['a','b','c'],
-                  '3' : ['d','e','f'],
-                  '4' : ['g','h','i'],
-                  '5' : ['j','k','l'],
-                  '6' : ['m','n','o'],
-                  '7' : ['p','q','r','s'],
-                  '8' : ['t','u','v'],
-                  '9' : ['w','x','y','z']}
-        res = []
+        if len(digits) == 0 : return []
+        num_chars = {"2":"abc" , "3":"def", "4":"ghi","5":"jkl","6":"mno","7":"pqrs",
+                    "8":"tuv","9":"wxyz"}
+        ans_len = len(digits)
+        ans = []
         
-        def get_comp(i,my_string) :
-            if len(my_string) == len(digits) :
-                res.append(my_string)
+        def dfs(index,cur_str) :
+            if index == ans_len :
+                ans.append(cur_str)
                 return
             
-            for letter in my_hash[digits[i]] :
-                get_comp(i+1,my_string + letter)
+            for char in num_chars[digits[index]] :
+                dfs(index+1,cur_str+char)
                 
-                
-            return res
+            return
         
-        if digits != '' :
-            return get_comp(0,'')
         
-        return []
-        
-                
-                
+        dfs(0,'')
+        return ans
             
                 
-                
-            
+        
