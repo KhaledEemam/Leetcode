@@ -1,28 +1,16 @@
 class Solution:
     def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
-        nums1 , nums2 = sorted(list(set(nums1))) , sorted(list(set(nums2)))
-        l , r = 0 , 0
-        answer1 , answer2 = [] , []
+        numbers1 , numbers2 = set(nums1) , set(nums2)
+        res1 , res2 = set() , set()
         
-        while l < len(nums1) and r < len(nums2) :
-            if nums1[l] == nums2[r] :
-                l += 1
-                r += 1
-            elif nums1[l] < nums2[r] :
-                answer1.append(nums1[l])
-                l += 1
-            else :                 
-                answer2.append(nums2[r])
-                r += 1
+        for n  in nums1 :
+            if n not in numbers2 :
+                res1.add(n)
                 
-        if l == len(nums1) :
-            answer2 += nums2[r:]
+        for n  in nums2 :
+            if n not in numbers1 :
+                res2.add(n)
             
-            
-        if r == len(nums2) :
-            answer1 += nums1[l:]
-            
-        return [answer1,answer2]
-            
-            
+
+        return [list(res1),list(res2)]
         
