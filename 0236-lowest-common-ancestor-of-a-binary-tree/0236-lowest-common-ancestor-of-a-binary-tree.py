@@ -12,24 +12,26 @@ class Solution:
             if not node :
                 return None
             
-            if node == p :
-                return p
-            if node == q :
-                return q
-            
-            lnode = dfs(node.left)
-            rnode = dfs(node.right)
-            
-            if not lnode and not rnode :
-                return None
-            if lnode and not rnode :
-                return lnode
-            if rnode and not lnode :
-                return rnode
-            if lnode and rnode :
+            if node.val == p.val or node.val == q.val :
                 return node
+            
+            left_result = dfs(node.left)
+            right_result = dfs(node.right)
+            
+            if left_result and right_result :
+                return node
+            
+            if left_result :
+                return left_result
+            
+            if right_result :
+                return right_result
+            
+            if  not left_result and not right_result :
+                return None
             
         return dfs(root)
             
             
                 
+        
