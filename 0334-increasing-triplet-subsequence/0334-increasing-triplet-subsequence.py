@@ -1,5 +1,20 @@
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
+        if len(nums) < 3 : return False
+        num1 , num2 , num3 = nums[0] , float("inf") , float("inf")
+        
+        for i in range(1,len(nums)) :
+            if nums[i] <= num1 :
+                num1 = nums[i]
+            elif nums[i] <= num2 :
+                num2 = nums[i]
+            else :
+                return True
+            
+        return False
+        
+        
+        """
         if len(nums) < 3 :
             return False
         
@@ -26,7 +41,7 @@ class Solution:
                 return True
             
         return False
-                
+        """        
                 
             
             
