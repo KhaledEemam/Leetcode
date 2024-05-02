@@ -1,41 +1,45 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
-        rows , columns = len(grid) , len(grid[0])
-        st_point = None
-        visit = set()
-        minutes , fresh = 0 , 0
-        q = collections.deque()
-        for row in range(len(grid)) :
-            for column in range(len(grid[0])) :
+        queue = deque()
+        visited = set()
+        ROWS, COLUMNS = len(grid) , len(grid[0])
+        minutes = 0
+        fresh = 0
+        
+        for row in range(ROWS) :
+            for column in range(COLUMNS) :
                 if grid[row][column] == 2 :
-                    visit.add((row,column))
-                    q.append((row,column))
-                    st_point = (row,column)
+                    visited.add((row,column))
+                    queue.append((row,column))
                 elif grid[row][column] == 1 :
                     fresh += 1
+                    
+        if fresh > 0 :
+            while queue and fresh > 0 :
 
-        
-        if st_point  :              
-            while q and fresh > 0:
-                for i in range(len(q)) :
-                    r , c = q.popleft()
-                    directions = [[1,0],[-1,0],[0,1],[0,-1]]
-                    for row , column in directions :
-                        dr , dc = row+r , column + c
-                        if (dr not in range(rows) or dc not in range(columns) or (dr,dc) in visit or grid[dr][dc] == 0):
+                for i in range(len(queue)) :
+                    x , y = queue.popleft()
+                    directions = [[1,0],[0,1],[-1,0],[0,-1]]
+
+                    for direction in directions :
+                        dx , dy = direction
+                        new_x , new_y = x+dx , y+dy
+
+                        if new_x < 0 or new_x >= ROWS or new_y < 0 or new_y >= COLUMNS or (new_x,new_y) in visited :
                             continue
 
-                        q.append((dr,dc))
-                        visit.add((dr,dc))
-                        grid[dr][dc] = 2
-                        fresh -= 1
+                        if grid[new_x][new_y] == 1  :
+                            visited.add((new_x,new_y))
+                            grid[new_x][new_y] = 2
+                            queue.append((new_x,new_y))
+                            fresh -= 1
+
 
                 minutes += 1
-        
-        for row in range(len(grid)) :
-            for column in range(len(grid[0])) :
+          
+        for row in range(ROWS) :
+            for column in range(COLUMNS) :
                 if grid[row][column] == 1 :
                     return -1
-            
+        
         return minutes
-                
