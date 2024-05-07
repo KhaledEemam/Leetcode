@@ -13,25 +13,3 @@ class Solution:
                 max_profit = max(max_profit,prices[i] - prices[l])
                     
         return max_profit
-            
-            
-        """
-        profits = []
-        for i in range(len(prices)-1) :
-            cur = prices[i]prices[i] - 
-            max_number = cur
-            for index in range(i+1,len(prices)) :
-                if prices[index] > max_number :
-                    max_number = prices[index]
-            profit = max_number - cur
-            profits.append(profit)
-           
-        if len(prices) > 1 :
-            return max(profits)
-        else :
-            return 0
-           """     
-                
-            
-            
-        
