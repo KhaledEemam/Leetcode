@@ -18,7 +18,3 @@ class Solution:
                     dp[r][c] = 1 + min(dp[r+1][c+1],dp[r+1][c],dp[r][c+1])
                     
         return dp[0][0]
-                    
-                    
-        
-        
