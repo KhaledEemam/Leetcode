@@ -9,6 +9,7 @@ class Solution:
                 x2 , y2 = points[j]
                 distance = abs(x2-x1) + abs(y2-y1)
                 adj[i].append([distance , j])
+                adj[j].append([distance , i])
         
         visited = set()
         heap = [[0,0]]
