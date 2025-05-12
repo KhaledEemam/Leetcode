@@ -9,7 +9,6 @@ class Solution:
             left , right = firstNumberIndex + 1 , len(nums) - 1 
 
             while left < right :
-                print('left' , left , 'right', right)
                 currentSum = firstNumber + nums[left] + nums[right]
                 difference = target - currentSum
                 if abs(difference) < currentDifference :
