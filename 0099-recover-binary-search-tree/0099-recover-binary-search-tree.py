@@ -6,39 +6,23 @@
 #         self.right = right
 class Solution:
     def recoverTree(self, root: Optional[TreeNode]) -> None:
+        first = second = prev = None
 
-        def dfs(node) :
-            if not node :
-                return []
+        def inorder(node) :
+            nonlocal first , second , prev
 
-            left_nodes = dfs(node.left)
-            right_nodes = dfs(node.right)
+            if not node : return
 
-            return left_nodes + [node.val] + right_nodes
+            inorder(node.left)
 
-        nodes = dfs(root)
-        number1 , number2 = float('inf') , float('inf')
-        
-        orderedNodes = sorted(nodes)
+            if prev and prev.val > node.val :
+                if not first :
+                    first = prev
+                second = node
 
-        for i in range(len(nodes)) :
-            if nodes[i] != orderedNodes[i] :
-                number1 , number2 = nodes[i] , orderedNodes[i]
+            prev = node
 
+            inorder(node.right)
 
-        def traverseTree(node) :
-            if not node : 
-                return
-            
-            if node.val == number1 :
-                node.val = number2
-            elif node.val == number2 :
-                node.val = number1
-
-            traverseTree(node.left)
-            traverseTree(node.right)
-
-            return
-
-
-        traverseTree(root)
+        inorder(root)
+        first.val , second.val = second.val , first.val   
